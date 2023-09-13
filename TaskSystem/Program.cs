@@ -10,10 +10,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddEntityFrameworkSqlServer()
-    .AddDbContext<TaskDbContext>(
-        options => options.UseSqlServer(builder.Configuration.GetConnectionString("TaskBase"))
-    );
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddDbContext<TaskDbContext>(options =>
+        options.UseInMemoryDatabase("InMemoryDb"));
+}
+else
+{
+    builder.Services.AddDbContext<TaskDbContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("TaskBase")));
+}
 
 builder.Services.AddScoped<ICrudRepository<User>, CrudRepository<User>>();
 builder.Services.AddScoped<ICrudRepository<Tasks>, CrudRepository<Tasks>>();
