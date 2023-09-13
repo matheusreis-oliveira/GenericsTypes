@@ -10,7 +10,9 @@ namespace TaskSystem.Configuration
     {
         public static void ConfigureDbContexts(this WebApplicationBuilder builder)
         {
-            if (builder.Environment.IsDevelopment())
+            var connectionString = builder.Configuration.GetConnectionString("TaskDb");
+
+            if (connectionString == "InMemoryDb")
             {
                 builder.Services.AddDbContext<TaskDbContext>(options =>
                     options.UseInMemoryDatabase("InMemoryDb"));
@@ -18,7 +20,7 @@ namespace TaskSystem.Configuration
             else
             {
                 builder.Services.AddDbContext<TaskDbContext>(options =>
-                    options.UseSqlServer(builder.Configuration.GetConnectionString("TaskBase")));
+                    options.UseSqlServer(connectionString));
             }
         }
 

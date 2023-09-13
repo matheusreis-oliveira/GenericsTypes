@@ -10,6 +10,9 @@ namespace TaskSystem.Data.Map
             base.Configure(builder);
             builder.Property(x => x.Description).HasMaxLength(1000);
             builder.Property(x => x.Status).IsRequired();
+            builder.Property(x => x.UserId);
+
+            builder.HasOne(x => x.User);
         }
     }
 }
