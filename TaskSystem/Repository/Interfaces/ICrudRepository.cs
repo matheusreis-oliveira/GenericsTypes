@@ -6,6 +6,6 @@
         Task<T> GetById(Guid id);
         Task<T> Create(T entity);
         Task<T> Update(T entity, Guid id);
-        Task Delete(Guid id);
+        Task<T> Delete(Guid id);
     }
 }

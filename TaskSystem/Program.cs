@@ -23,6 +23,7 @@ else
 
 builder.Services.AddScoped<ICrudRepository<User>, CrudRepository<User>>();
 builder.Services.AddScoped<ICrudRepository<Tasks>, CrudRepository<Tasks>>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 

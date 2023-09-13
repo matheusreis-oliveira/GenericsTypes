@@ -45,7 +45,7 @@ namespace TaskSystem.Repository
             return null;
         }
 
-        public async Task Delete(Guid id)
+        public async Task<T> Delete(Guid id)
         {
             var entity = await _dbSet.FindAsync(id);
             if (entity != null)
@@ -53,6 +53,8 @@ namespace TaskSystem.Repository
                 _dbSet.Remove(entity);
                 await _dbContext.SaveChangesAsync();
             }
+
+            return null;
         }
 
     }
