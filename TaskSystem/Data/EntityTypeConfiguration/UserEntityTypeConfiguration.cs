@@ -3,7 +3,7 @@ using TaskSystem.Models;
 
 namespace TaskSystem.Data.Map
 {
-    public class UserMap : BaseMap<User>
+    public class UserEntityTypeConfiguration : EntityTypeConfiguration<User>
     {
         public override void Configure(EntityTypeBuilder<User> builder)
         {

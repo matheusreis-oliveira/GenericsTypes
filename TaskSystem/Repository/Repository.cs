@@ -4,12 +4,12 @@ using TaskSystem.Repository.Interfaces;
 
 namespace TaskSystem.Repository
 {
-    public class CrudRepository<T> : ICrudRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
         private readonly TaskDbContext _dbContext;
         private readonly DbSet<T> _dbSet;
 
-        public CrudRepository(TaskDbContext taskDbContext)
+        public Repository(TaskDbContext taskDbContext)
         {
             _dbContext = taskDbContext;
             _dbSet = _dbContext.Set<T>();

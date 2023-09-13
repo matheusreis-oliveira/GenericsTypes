@@ -4,7 +4,7 @@ using TaskSystem.Models.Interfaces;
 
 namespace TaskSystem.Data.Map
 {
-    public class BaseMap<T> : IEntityTypeConfiguration<T> where T : class, IEntity
+    public abstract class EntityTypeConfiguration<T> : IEntityTypeConfiguration<T> where T : class, IEntity
     {
         public virtual void Configure(EntityTypeBuilder<T> builder)
         {

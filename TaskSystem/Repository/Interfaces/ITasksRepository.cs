@@ -2,7 +2,7 @@
 
 namespace TaskSystem.Repository.Interfaces
 {
-    public interface ITasksRepository : ICrudRepository<Tasks>
+    public interface ITasksRepository : IRepository<Tasks>
     {
     }
 }

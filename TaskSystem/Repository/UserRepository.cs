@@ -1,10 +1,9 @@
 ﻿using TaskSystem.Data;
 using TaskSystem.Models;
-using TaskSystem.Repository.Interfaces;
 
 namespace TaskSystem.Repository
 {
-    public class UserRepository : CrudRepository<User>, IUserRepository
+    public class UserRepository : Repository<User>
     {
         public UserRepository(TaskDbContext taskDbContext) : base(taskDbContext)
         {

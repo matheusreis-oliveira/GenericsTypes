@@ -18,7 +18,7 @@ namespace TaskSystem.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(BaseMap<>).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(EntityTypeConfiguration<>).Assembly);
 
             base.OnModelCreating(modelBuilder);
         }

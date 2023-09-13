@@ -6,9 +6,9 @@ namespace TaskSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : BaseController<User>
+    public class TasksController : BaseController<Tasks>
     {
-        public UserController(IRepository<User> repository) : base(repository)
+        public TasksController(IRepository<Tasks> repository) : base(repository)
         {
         }
     }

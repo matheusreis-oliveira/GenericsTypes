@@ -1,8 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using TaskSystem.Data;
-using TaskSystem.Models;
-using TaskSystem.Repository;
-using TaskSystem.Repository.Interfaces;
+using TaskSystem.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,20 +6,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-if (builder.Environment.IsDevelopment())
-{
-    builder.Services.AddDbContext<TaskDbContext>(options =>
-        options.UseInMemoryDatabase("InMemoryDb"));
-}
-else
-{
-    builder.Services.AddDbContext<TaskDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("TaskBase")));
-}
-
-builder.Services.AddScoped<ICrudRepository<User>, CrudRepository<User>>();
-builder.Services.AddScoped<ICrudRepository<Tasks>, CrudRepository<Tasks>>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.ConfigureDbContexts();
+builder.RegisterRepositories();
 
 var app = builder.Build();
 
