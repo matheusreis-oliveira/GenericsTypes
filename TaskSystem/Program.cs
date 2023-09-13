@@ -4,8 +4,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
+builder.ConfigureSwagger();
+builder.ConfigureAuthentication();
 builder.ConfigureDbContexts();
 builder.RegisterRepositories();
 
@@ -19,6 +20,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 
