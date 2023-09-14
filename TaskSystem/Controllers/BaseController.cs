@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using TaskSystem.Repository.Interfaces;
 
 namespace TaskSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public abstract class BaseController<TEntity> : ControllerBase where TEntity : class
     {
         private readonly IRepository<TEntity> _repository;

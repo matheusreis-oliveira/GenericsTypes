@@ -8,6 +8,7 @@ namespace TaskSystem.Data.Map
         public override void Configure(EntityTypeBuilder<User> builder)
         {
             base.Configure(builder);
+            builder.Property(x => x.Name).IsRequired().HasMaxLength(255);
             builder.Property(x => x.Email).IsRequired().HasMaxLength(155);
         }
     }
